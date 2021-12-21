@@ -1,20 +1,20 @@
 package com.beshton.shop.entities;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import  java.util.Date;
 import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
-public class Sales {
+public class Sale {
 
     private @Id
     @GeneratedValue
     Long id;
-    // do I need to create a constructor for id?
     private String itemName;
     private String sellerFirstName;
     private String sellerLastName;
@@ -23,19 +23,20 @@ public class Sales {
     private String postalCode;
     private String manufacturer;
     private String modelName;
-    private String condition;
+    private Boolean used;
     private String description;
     private String saleStatus;
-    private Date date;
+    private String timeStamp;
     private Long latitude;
     private Long longitude;
 
-    Sales() {
+    Sale() {
 
     }
 
-    public Sales(Long id, String itemName, String sellerFirstName, String sellerLastName, String category, Long price, String postalCode, String manufacturer, String modelName, String condition, String description, String saleStatus, Date date, Long latitude, Long longitude) {
-        this.id = id;
+    public Sale(String itemName, String sellerFirstName, String sellerLastName, String category, Long price,
+                String postalCode, String manufacturer, String modelName, Boolean used, String description,
+                String saleStatus, String timeStamp, Long latitude, Long longitude) {
         this.itemName = itemName;
         this.sellerFirstName = sellerFirstName;
         this.sellerLastName = sellerLastName;
@@ -44,10 +45,10 @@ public class Sales {
         this.postalCode = postalCode;
         this.manufacturer = manufacturer;
         this.modelName = modelName;
-        this.condition = condition;
+        this.used = used;
         this.description = description;
         this.saleStatus = saleStatus;
-        this.date = date;
+        this.timeStamp = timeStamp;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -60,8 +61,8 @@ public class Sales {
 
     public void setLocation(List<Long> location) {
         java.util.List<Long> latLongPair = location;
-        this.latitude = latLongPair[0];
-        this.longitude = latLongPair[1];
+        this.latitude = latLongPair.get(0);
+        this.longitude = latLongPair.get(1);
     }
 
     public String getSellerName() {
@@ -138,12 +139,12 @@ public class Sales {
         this.modelName = modelName;
     }
 
-    public String getCondition() {
-        return condition;
+    public Boolean getUsed() {
+        return used;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setUsed(Boolean used) {
+        this.used = used;
     }
 
     public String getDescription() {
@@ -171,11 +172,50 @@ public class Sales {
     }
 
 
-    public Date getDate() {
-        return date;
+    public String getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+            return true;
+        if (!(o instanceof Sale))
+            return false;
+        Sale sale = (Sale) o;
+        return Objects.equals(this.id, sale.id) && Objects.equals(this.sellerFirstName, sale.sellerFirstName)
+                && Objects.equals(this.sellerLastName, sale.sellerLastName) && Objects.equals(this.itemName, sale.itemName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id, this.sellerFirstName, this.sellerLastName, this.itemName);
+    }
+
+    @Override
+    public String toString() {
+        return "Sale{" + "id=" + this.id + ", firstName='" + this.sellerFirstName + '\'' + ", lastName='" + this.sellerLastName
+                + '\'' + ", role='" + this.itemName + '\'' + '}';
+    }
+
+    public Long getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Long latitude) {
+        this.latitude = latitude;
+    }
+
+    public Long getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Long longitude) {
+        this.longitude = longitude;
     }
 }

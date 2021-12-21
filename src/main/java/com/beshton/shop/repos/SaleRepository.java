@@ -7,5 +7,5 @@ import com.beshton.shop.advices.*;
 import com.beshton.shop.repos.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SalesRepository extends JpaRepository<Employee, Long> {
+public interface SaleRepository extends JpaRepository<Sale, Long> {
 }
