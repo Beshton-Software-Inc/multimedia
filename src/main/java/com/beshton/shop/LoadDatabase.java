@@ -12,6 +12,9 @@ import com.beshton.shop.controllers.*;
 import com.beshton.shop.advices.*;
 import com.beshton.shop.repos.*;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 
 
@@ -38,7 +41,8 @@ class LoadDatabase {
             });
             saleRepository.save(new Sale("Mixer", "Casey", "Jian", "Kitchen",
                     20L, "61801", "KitchenAid", "A101010", true,
-                    "Almost new", "pending", LocalDateTime.now().toString(), 10898L, 1893L));
+                    "Almost new", "pending", LocalDateTime.now().toString(), 10898L, 1893L,
+                    "/Users/keziah/test.jpg"));
             saleRepository.findAll().forEach(sale -> {
                 log.info("Preloaded " + sale);
             });

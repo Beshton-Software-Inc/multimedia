@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import org.hibernate.annotations.GenericGenerator;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -29,6 +31,8 @@ public class Sale {
     private String timeStamp;
     private Long latitude;
     private Long longitude;
+    private String imageName;
+    private String imageUri;
 
     Sale() {
 
@@ -36,7 +40,7 @@ public class Sale {
 
     public Sale(String itemName, String sellerFirstName, String sellerLastName, String category, Long price,
                 String postalCode, String manufacturer, String modelName, Boolean used, String description,
-                String saleStatus, String timeStamp, Long latitude, Long longitude) {
+                String saleStatus, String timeStamp, Long latitude, Long longitude, String imageUri) {
         this.itemName = itemName;
         this.sellerFirstName = sellerFirstName;
         this.sellerLastName = sellerLastName;
@@ -51,6 +55,7 @@ public class Sale {
         this.timeStamp = timeStamp;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.imageUri = imageUri;
     }
 
 
@@ -217,5 +222,13 @@ public class Sale {
 
     public void setLongitude(Long longitude) {
         this.longitude = longitude;
+    }
+
+    public String getImageUri() {
+        return this.imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
     }
 }
