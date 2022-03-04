@@ -52,26 +52,16 @@ public class AWSS3FileControllerTest {
     @MockBean
     private AWSS3Service awss3Service;
 
-    UploadFileResponse response1;
-    UploadFileResponse response2;
     File file1;
-    File file2;
     File file3;
     String file4;
     File file5;
 
     @BeforeEach
     private void setup() throws Exception {
-        //System.setProperty("user.dir", "C:\\Users\\cw131\\IdeaProjects\\multimedia-main\\src\\test\\java\\com\\beshton\\shop\\controllers\\data");
-        response1 = new UploadFileResponse("2222.jpg", "http://localhost:8086/downloadFile/2222.jpg",
-                "http://localhost:8086/deleteImage/2222.jpg", "image/jpeg", 351219);
-        response2 = new UploadFileResponse("f93968013d344812a4bc485a025650a2-0001.jpg", "http://localhost:8086/downloadFile/f93968013d344812a4bc485a025650a2-0001.jpg",
-                "http://localhost:8086/deleteImage/f93968013d344812a4bc485a025650a2-0001.jpg", "image/jpeg", 367865);
-
         ClassLoader classLoader = getClass().getClassLoader();
         file3 = new File(classLoader.getResource("1111.jpg").getFile());
         file1 = new File(classLoader.getResource("2222.jpg").getFile());
-        file2 = new File(classLoader.getResource("f93968013d344812a4bc485a025650a2-0001.jpg").getFile());
         file4 = "2222123.jpg";
         file5 = new File(classLoader.getResource("cdf-clinic-raw.csv").getFile());
     }
