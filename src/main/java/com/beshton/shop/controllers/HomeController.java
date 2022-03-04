@@ -22,7 +22,7 @@ public class HomeController {
 
     @RequestMapping(value = "/")
     public String index() {
-        return "index";
+        return "forward:/index.html";
     }
 
 //

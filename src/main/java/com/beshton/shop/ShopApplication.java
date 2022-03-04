@@ -5,13 +5,20 @@ import com.beshton.shop.controllers.*;
 import com.beshton.shop.entities.*;
 import com.beshton.shop.exceptions.*;
 import com.beshton.shop.repos.*;
+import com.beshton.shop.property.FileStorageProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
+
 @SpringBootApplication(scanBasePackages = "com.beshton.shop")
+@EnableConfigurationProperties({
+		FileStorageProperties.class
+})
+
 //public class ShopApplication extends WebSecurityConfigurerAdapter {
 public class ShopApplication {
 //	@RequestMapping("/user")
@@ -51,6 +58,7 @@ public class ShopApplication {
 //	}
 
 	public static void main(String[] args) {
+		//System.out.println("Working Directory = " + System.getProperty("user.dir"));
 		SpringApplication.run(ShopApplication.class, args);
 	}
 

@@ -39,6 +39,12 @@ public class WebEmployeeController {
         return "addEmployee";
     }
 
+    /*@ResponseBody
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }*/
+
 
     @PostMapping("/addEmployee")
     public RedirectView addEmployee(@ModelAttribute("emp") Employee emp, RedirectAttributes redirectAttributes) {
@@ -48,5 +54,7 @@ public class WebEmployeeController {
         redirectAttributes.addFlashAttribute("addEmployeeSuccess", true);
         return redirectView;
     }
+
+
 
 }
